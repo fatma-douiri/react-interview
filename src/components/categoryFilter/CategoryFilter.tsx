@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react';
+
 import { useMovies } from '../../hooks/useMovies';
 import { Movie } from '../../types/movie';
 

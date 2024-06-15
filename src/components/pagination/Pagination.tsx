@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 import { ReactComponent as ArrowSvgIcon } from '../../assets/arrow.svg?react';
 import { useMovies } from '../../hooks/useMovies';
-
 import SvgIcon from '../svgIcon/SvgIcon';
 type PaginationProps = {
   total: number;
@@ -34,7 +33,11 @@ const Pagination: FC<PaginationProps> = ({ total }) => {
           alt="arrow"
         />
       </button>
-      <select value={itemsPerPage} onChange={(e) => changeItemsPerPage(Number(e.target.value))}>
+      <select
+        value={itemsPerPage}
+        onChange={(e) => changeItemsPerPage(Number(e.target.value))}
+        className="cursor-pointer"
+      >
         <option value={4}>4</option>
         <option value={8}>8</option>
         <option value={12}>12</option>
