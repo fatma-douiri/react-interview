@@ -41,7 +41,12 @@ const moviesSlice = createSlice({
       state.currentPage = action.payload;
     },
     setItemsPerPage(state, action: PayloadAction<number>) {
-      state.itemsPerPage = action.payload;
+      const newItemsPerPage = action.payload;
+      const totalItems = state.movies.length;
+      const newTotalPages = Math.ceil(totalItems / newItemsPerPage);
+
+      state.itemsPerPage = newItemsPerPage;
+      state.currentPage = Math.min(state.currentPage, newTotalPages) || 1;
     },
     toggleDislike(state, action: PayloadAction<{ disliked: boolean; id: string; liked: boolean }>) {
       const index = state.movies.findIndex((movie) => movie.id === action.payload.id);
